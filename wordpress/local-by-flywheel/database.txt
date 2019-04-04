@@ -1,0 +1,8 @@
+ FLYWHEEL
+
+Create site
+Tab database, click on adminer, it open a new tab in the browser.
+Click on Import and choose the database .sql Execute.
+Select table with wp_options (or monsite_options) in first tab “select data”, edit the website url : in siteurl and home.
+Change theme Wordpress in wordpresspage appearance
+Change table_prefix in file wp-config

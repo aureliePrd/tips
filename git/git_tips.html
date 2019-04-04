@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GIT tips</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <!-- https://material.io/tools/icons/ -->
+
+
+<style>  
+  .material-icons {
+    vertical-align: sub;
+  }
+  blockquote {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #FFF8DC;
+    border-left: 2px solid #ffeb8e;
+  }
+  h1 {
+    padding: 10px 30px;
+  }
+	.box {
+		padding: 10px 30px; 
+	}
+	.grey {
+		background-color: #fafafa;
+	}
+	.greyDark {
+		background-color: #d4d4d4;
+	}
+</style>
+</head>
+
+<body>
+  <section class="container">
+  <h1>GIT tips</h1>
+  
+  <div class="box grey">    
+    <h2>Rappel</h2>
+    <ul>
+      <li><code>git pull</code></li>
+      <li><code>git status</code></li>
+      <li><code>git add path/file</code></li>
+      <li><code>git add .</code> to commit all files</li>
+      <li><code>git commit -m "message commit"</code></li>
+      <li><code>git push</code></li>
+      <li><code>git push origin +master</code> le + demande à git de forcer le push.</li>
+      <li><code>git checkout file</code> pour effacer mon fichier local et récupérer celui du repo git</li>
+      <li><code>git diff path/file</code> pour voir les différences dans le fichier entre mon local et le repo</li>
+    </ul>
+  </div>
+
+  <div class="box greyDark">
+    <h2>Terminal</h2>    
+    <ul>
+      <li><code>cd</code> pour changer de dossier. Tape cd puis glisse le dossier depuis le finder, ça collera le chemin. Tape entrer pour y accéder.</li>
+      <li><code>cd ~</code> pour revenir à la racine, dossier user</li>
+      <li><code>cd ../</code> pour remonter d'un cran dans le dossier </li>      
+      <li><code>pwd</code> donne le chemin, utile pour savoir où on se trouve</li>
+      <li><code>ls</code> affiche une liste sur 3 colonnes des éléments du dossier dans lequel on se trouve</li>      
+      <li><code>ls -l</code> affiche la même liste avec plus de détails. alias <code>ll</code></li>
+      <li><code>mv fichier.html nouveaufichier.html</code> pour renommer un fichier</li>
+      <li><code>scp path/file new/path/file</code> pour COPIER un fichier dans un autre endroit</li>
+      <li><code>scp path/myfolder new/path/myfolder</code> pour COPIER un dossier dans un autre endroit. Exemple: copier les uploads d'un site wordpress</li>      
+      <li><code>rm</code> remove/supprime un fichier</li>
+      <li><code>rm -r</code> remove/supprime un dossier</li>
+      <li><code>rm -rf</code> pour forcer la suppression. peut être risqué&nbsp;<i class="material-icons">warning</i></li>
+      <li>
+        <strong>Voir et editer un fichier dans la console</strong>
+        <ul>
+          <li><code>cat path/file</code> (pour voir)</li>
+          <li><code>vi path/file</code> -- :q to quit</li>
+          <li><code>vim path/file</code> -- :q to quit</li>
+          <li><code>nano path/file</code>  -- <kbd>CTRL</kbd>+<kbd>X</kbd> to quit. <kbd>Y</kbd> to save</li>    
+        </ul>
+      </li>
+      
+    </ul>
+    
+    <p><i class="material-icons">warning</i>&nbsp; <code>rm file</code> supprime le fichier localement versus <code>git rm file</code> supprime le fichier aussi dans le repo git</p>    
+    <p></p>
+  </div>
+
+  <div class="box grey">
+    <h2>Issues</h2>  	
+    <p>A. <a href="https://stackoverflow.com/questions/19085807/please-enter-a-commit-message-to-explain-why-this-merge-is-necessary-especially" target="_blank">Necessary Merge</a></p>
+    <blockquote>please enter a commit message to explain why this merge is necessary, especially if it merges an updated upstream into a topic branch.</blockquote> 
+  	<ol>
+  		<li>press <kbd>i</kbd></li>
+  		<li>write a merge message</li>
+  		<li>press <kbd>esc</kbd></li>
+  		<li>write ":wq"</li>
+  		<li>press <kbd>enter</kbd></li>
+  	</ol>
+
+
+  </div>
+
+  <div class="box greyDark">
+  	<h2><p>Finder</p></h2>
+    <p><kbd>CMD</kbd>+<kbd>shift</kbd>+<kbd>.</kbd> -- afficher les fichiers cachés/Show hidden files (ie .git and .gitignore)</p>
+  </div>
+
+  <div class="box grey">    
+    <h2>Clone repo</h2>
+    <p>**Deux façons de cloner : HTTPS ou SSH</p>
+    <p> Quand on configure un git sur un dépot, si on le configure en HTTPS : le mot de passe est toujours demandé. c'est OK en local. <br>
+      Mais sur le serveur, toujours préférer SSH.  Puisque https demande nos mdp perso.  </p>
+    <p>Si le git a été configuré en https, il faut changer pour ssh via une ligne de commande : https://help.github.com/articles/changing-a-remote-s-url/</p>
+  </div>
+
+  <div class="box greyDark">
+    <h2>Tips</h2>
+    <ul>
+      <li>undo/revert the last commit
+        <ul>
+          <li><code>git revert &lt;commit hash&gt;</code> it will create a new commit called 'revert commit ...'</li>
+        </ul>
+      </li>
+      <li>Supprimer un commit local/Delete a local commit 
+        <ul>
+          <li><code>git rebase -i HEAD~1</code></li>
+          <li><code>HEAD</code> est le commit actuel où on se trouve actuellement</li>
+          <li><code>HEAD~</code> = <code>HEAD~1</code> est le dernier commit</li>
+          <li><code>HEAD~n</code> avec <samp>n</samp> nombre de commits avant le commit actuel.</li>
+        </ul>
+      </li>
+      <li>Supprimer un commit "pushé""/Delete a remote commit
+        <ol>
+          <li>faire les étapes pour supprimer le commit local</li>
+          <li><code>git push origin +master</code> le + demande à git de forcer le push.</li>
+        </ol>
+      </li>
+      
+      <li><i class="material-icons">warning</i>&nbsp;INFO A VERIFIER. supprimer le dernier commit pushé
+        <ul>
+          <li><code>git reset --hard HEAD~1 </code> et <code>git push origin HEAD --force</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+
+
+  </section>
+
+</body>
+</html>
+
+

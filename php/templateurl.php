@@ -1,0 +1,1 @@
+<img src="<?php echo TEMPLATEURL ?>/img/image.png" class="img-fluid"> 
